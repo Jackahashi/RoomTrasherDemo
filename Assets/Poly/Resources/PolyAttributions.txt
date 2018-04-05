@@ -1,0 +1,19 @@
+This project uses the following items from Poly (http://poly.google.com):
+
+Title: Blender
+Author: Poly by Google
+URL: https://poly.google.com/view/c55xJEOICb4
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Hammer
+Author: Poly by Google
+URL: https://poly.google.com/view/cOizz1RJnb3
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Side table
+Author: Darwin Yamamoto
+URL: https://poly.google.com/view/dfL6q_VTWVf
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
