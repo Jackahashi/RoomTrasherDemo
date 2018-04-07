@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4701519282405464}
   - component: {fileID: 23153799518500052}
   - component: {fileID: 33117617653108942}
-  m_Layer: 0
+  - component: {fileID: 64884709847943408}
+  - component: {fileID: 54479510992158100}
+  m_Layer: 8
   m_Name: PbrOpaqueDoubleSided_p1
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,9 +38,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4438475236463496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: node-0
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,9 +55,11 @@ GameObject:
   - component: {fileID: 4060524568598438}
   - component: {fileID: 23969373212496428}
   - component: {fileID: 33793938851471540}
-  m_Layer: 0
+  - component: {fileID: 64831737058701758}
+  - component: {fileID: 54899556871251980}
+  m_Layer: 8
   m_Name: PbrOpaqueDoubleSided_p0
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,9 +73,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4232156223570810}
   - component: {fileID: 114019905284285526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hammer_Poly_by_Google_cOizz1RJnb3
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,14 +99,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825137115845482}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4438475236463496}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4438475236463496
 Transform:
   m_ObjectHideFlags: 1
@@ -213,6 +217,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728541454550932}
   m_Mesh: {fileID: 43941319152500790, guid: a51da1973dd0a3c4f8a344d9775d54a9, type: 2}
+--- !u!54 &54479510992158100
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144893046992918}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54899556871251980
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728541454550932}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &64831737058701758
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728541454550932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43941319152500790, guid: a51da1973dd0a3c4f8a344d9775d54a9, type: 2}
+--- !u!64 &64884709847943408
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144893046992918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43814359377843004, guid: a51da1973dd0a3c4f8a344d9775d54a9, type: 2}
 --- !u!114 &114019905284285526
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4979322200868962}
   - component: {fileID: 23596837079884290}
   - component: {fileID: 33106444327413650}
+  - component: {fileID: 54241553584548584}
+  - component: {fileID: 65360509319708484}
+  - component: {fileID: 114187512459791062}
   m_Layer: 0
   m_Name: node_MeshObject1331332352-PolyPaper20
   m_TagString: Untagged
@@ -51,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926158346475892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.737, y: 1.09, z: -0.19}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children:
   - {fileID: 4979322200868962}
   m_Father: {fileID: 0}
@@ -112,6 +115,44 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215994446222668}
   m_Mesh: {fileID: 43181059689396902, guid: 97db4949e68fadd48a697fdcd022c473, type: 2}
+--- !u!54 &54241553584548584
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215994446222668}
+  serializedVersion: 2
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &65360509319708484
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215994446222668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.87794864, y: 0.9696512, z: 0.9494934}
+  m_Center: {x: -0.52139264, y: 0.4024124, z: 0.6023196}
+--- !u!114 &114187512459791062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215994446222668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d613e7b446bc05c419d4466013819186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114808640811530986
 MonoBehaviour:
   m_ObjectHideFlags: 1
