@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Walls
   - Hammer
+  - FirstStatue
   layers:
   - Default
   - TransparentFX
