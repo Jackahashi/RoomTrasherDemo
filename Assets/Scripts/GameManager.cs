@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public DamageValue damageScore;
+    //public DamageValue damageScore;
 
     public float timeRemaining;
 

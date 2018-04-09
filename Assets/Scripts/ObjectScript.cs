@@ -10,8 +10,10 @@ public class ObjectScript : MonoBehaviour {
     public AudioClip sfxMoney;
     AudioSource audioSource;
     public GameObject particleSystemPrefab;
+    public GameObject moneyParticle;
 
-
+    private bool firstImpact = true;
+    private bool musicPlaying = false;
 
 
     private void Start()
@@ -24,25 +26,36 @@ public class ObjectScript : MonoBehaviour {
     {
         if(collision.gameObject.tag != "Hammer")
         {
-            
+           
 
             if (collision.relativeVelocity.magnitude > 2)
             {
                 audioSource.PlayOneShot(sfxImpact);
-                audioSource.PlayOneShot(sfxMoney);
+
+                
                 foreach (ContactPoint contact in collision.contacts)
                     {
                         Instantiate(particleSystemPrefab, contact.point, Quaternion.identity);
                     }
 
+                if (firstImpact)
+                {
+                    Debug.Log("first impact");
+                    Instantiate(moneyParticle, gameObject.transform.position,Quaternion.identity);
+                    firstImpact = false;
+                    //increase score on gamemanager
+                    audioSource.PlayOneShot(sfxMoney);
+                }
             }
         }
        
 
-        if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue")
+        if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue" && !(musicPlaying))
         {
             //Debug.Log("Object hit floor");
             floor.PlayMusic();
+            musicPlaying = true;
+
             
         }
 

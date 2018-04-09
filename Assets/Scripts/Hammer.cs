@@ -10,25 +10,30 @@ public class Hammer : MonoBehaviour {
 
     public AudioClip sfxHammer;
 
-    // Use this for initialization
+  
+
     void Start () {
         audioSource = GetComponent<AudioSource>();
+
+        
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("hammer hit");
         audioSource.PlayOneShot(sfxHammer);
 
         foreach (ContactPoint contact in collision.contacts)
         {
           
-                Instantiate(particleSystemPrefab, contact.point, Quaternion.identity);
+            Instantiate(particleSystemPrefab, contact.point, Quaternion.identity);
          
 
         }
 
 
     }
+
 
 }
 
