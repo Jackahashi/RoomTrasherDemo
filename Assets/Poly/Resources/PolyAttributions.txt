@@ -6,9 +6,27 @@ URL: https://poly.google.com/view/cOizz1RJnb3
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
+Title: Shelf
+Author: Poly by Google
+URL: https://poly.google.com/view/fAfJzZmQpgY
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Shelf
+Author: Julien Kleber
+URL: https://poly.google.com/view/27oQW-j72cw
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: Side table
 Author: Darwin Yamamoto
 URL: https://poly.google.com/view/dfL6q_VTWVf
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Storage
+Author: Poly by Google
+URL: https://poly.google.com/view/6fTi-V3_UEv
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
