@@ -16,6 +16,8 @@ public class ObjectScript : MonoBehaviour
 
     public int scoreValue;
 
+     
+
 
     // public transform startposition;  // e.g. current distance to floor - if distance to floor changes by more than 0.1. set a bool to true to enable point scoring
 
@@ -39,8 +41,6 @@ public class ObjectScript : MonoBehaviour
         // future modification may be necessary for performance -->  if current position on y axis (height) is more than 0.2 from object start height , points can be scored
         // the above script would detect if the object had moved from its start position (heingt) and than enable it to score points collisions
 
-        
-
 
             if (collision.gameObject.tag != "Hammer")
             {
@@ -62,9 +62,7 @@ public class ObjectScript : MonoBehaviour
                         audioSource.PlayOneShot(sfxMoney);
                     }
                 }
-            }
-        
-
+            } 
 
                 if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue" && !(musicPlaying))
                 {
@@ -76,9 +74,17 @@ public class ObjectScript : MonoBehaviour
 
                 }
 
-            }
+    }
 
-        }
+  private void OnCollisionStay(Collision col)
+     {
+         if (col.gameObject.name == "Right Hammer")
+         {
+
+         }
+     }
+   
+}
 
 
 
