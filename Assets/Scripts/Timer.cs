@@ -12,7 +12,7 @@ using UnityEngine.UI;
     public Text SecsTimer;
     public Text milliTimer;
     float minutes = 0;
-    public float seconds = 20;
+    public float seconds = 10;
     float miliseconds = 0;
 
     AudioSource audioSource;
@@ -23,6 +23,14 @@ using UnityEngine.UI;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        seconds = 10;
+        miliseconds = 0;
+    }
+
+    private void OnEnable()
+    {
+        seconds = 10;
+        
     }
 
     void Update()
@@ -32,11 +40,13 @@ using UnityEngine.UI;
         {
             if (seconds <= 0 && miliseconds <=0)
             {
-
+                miliseconds = 0;
                 gamemanager.OutOfTime();
-                miliseconds = 00;
+                Debug.Log("Outtatime called");
+                milliTimer.text = miliseconds.ToString("00");
+                SecsTimer.text = seconds.ToString("10");
                 return;
-                //try to find a way to override the "milliseconds = 100" outside of the if statement
+                
                 //minutes--;
                 //seconds = 59;
             }
@@ -51,7 +61,7 @@ using UnityEngine.UI;
             // maybe play a Tick noise?
         }
 
-        if (seconds == 2 && miliseconds == 100 )
+        if (seconds == 3 && miliseconds == 100 )
         {
             Debug.Log("3 seconds left");
             PlayChime();
@@ -72,5 +82,17 @@ using UnityEngine.UI;
     void PlayChime()
     {
         audioSource.PlayOneShot(sfxTimerChime);
+        StartCoroutine(DelayChimes());
+    }
+
+    IEnumerator DelayChimes()
+    {
+        yield return new WaitForSeconds(1.0f);
+        audioSource.PlayOneShot(sfxTimerChime);
+        yield return new WaitForSeconds(1.0f);
+        audioSource.PlayOneShot(sfxTimerChime);
+        yield return new WaitForSeconds(1.0f);
+        audioSource.PlayOneShot(sfxTimerChime);
+
     }
 }
