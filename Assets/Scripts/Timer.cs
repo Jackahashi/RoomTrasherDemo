@@ -30,19 +30,16 @@ using UnityEngine.UI;
     private void OnEnable()
     {
         seconds = 10;
-        
     }
 
     void Update()
     {
-
         if (miliseconds <= 0)
         {
             if (seconds <= 0 && miliseconds <=0)
             {
                 miliseconds = 0;
                 gamemanager.OutOfTime();
-                Debug.Log("Outtatime called");
                 milliTimer.text = miliseconds.ToString("00");
                 SecsTimer.text = seconds.ToString("10");
                 return;

@@ -1,8 +1,38 @@
 This project uses the following items from Poly (http://poly.google.com):
 
+Title: Camera
+Author: Poly by Google
+URL: https://poly.google.com/view/0nfSsetwy0Z
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: Hammer
 Author: Poly by Google
 URL: https://poly.google.com/view/cOizz1RJnb3
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Headphones
+Author: Poly by Google
+URL: https://poly.google.com/view/4h-eJ4xCsQa
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Printer
+Author: Poly by Google
+URL: https://poly.google.com/view/7NKDv75jVeg
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Printer
+Author: Mikael Ganehag Brorsson
+URL: https://poly.google.com/view/6uy3vUnmbCJ
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Server rack
+Author: Mikael Ganehag Brorsson
+URL: https://poly.google.com/view/60s93Adyxvj
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
@@ -26,12 +56,36 @@ https://creativecommons.org/licenses/by/3.0/legalcode
 
 Title: Storage
 Author: Poly by Google
+URL: https://poly.google.com/view/9plvQLFhacD
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Storage
+Author: Poly by Google
 URL: https://poly.google.com/view/6fTi-V3_UEv
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Television
+Author: Poly by Google
+URL: https://poly.google.com/view/6Fa29JN3A3F
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
 Title: Thinker glossy
 Author: Miguelangelo Rosario
 URL: https://poly.google.com/view/1ff_loTBJsF
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: VR Headset
+Author: Poly by Google
+URL: https://poly.google.com/view/bvd33G7Q66m
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: VR Headset
+Author: Eloi Strée
+URL: https://poly.google.com/view/8yCklD-63qW
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode

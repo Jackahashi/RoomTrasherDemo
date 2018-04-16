@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObjectScript : MonoBehaviour
 {
 
+    // store start pos and rotation
+
     public GameManager gameManager;
 
     public FloorScript floor;
@@ -13,25 +15,30 @@ public class ObjectScript : MonoBehaviour
     AudioSource audioSource;
     public GameObject particleSystemPrefab;
     public GameObject moneyParticle;
+    public GameObject dollarParticle;
 
     public int scoreValue;
 
-     
+    float t;
+    Vector3 startPosition;
+ 
+    float timeToMove = 2000;
+
+    private Rigidbody rb;
 
 
     // public transform startposition;  // e.g. current distance to floor - if distance to floor changes by more than 0.1. set a bool to true to enable point scoring
 
-   
+
 
     private bool ScoreImpact = true;
     private static bool musicPlaying = false;
 
 
-    private void Start()
+   void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
-        // obtain the start height of the object centre
+        startPosition = gameObject.transform.position;
     }
 
 
@@ -71,19 +78,23 @@ public class ObjectScript : MonoBehaviour
                     gameManager.EndStageOne();
                     musicPlaying = true;
 
-
                 }
 
     }
 
-  private void OnCollisionStay(Collision col)
-     {
-         if (col.gameObject.name == "Right Hammer")
-         {
+    public void StartingPositions()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+        gameObject.transform.position = startPosition;
+        
+    }
 
-         }
-     }
-   
+    public void showValue()
+    {
+        Debug.Log("Dollar Values showing");
+        Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
+      
+    }
 }
 
 
