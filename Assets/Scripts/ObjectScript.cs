@@ -21,6 +21,7 @@ public class ObjectScript : MonoBehaviour
 
     float t;
     Vector3 startPosition;
+    public Quaternion startRotation;
  
     float timeToMove = 2000;
 
@@ -39,6 +40,7 @@ public class ObjectScript : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         startPosition = gameObject.transform.position;
+        startRotation = gameObject.transform.rotation;
     }
 
 
@@ -84,9 +86,10 @@ public class ObjectScript : MonoBehaviour
 
     public void StartingPositions()
     {
-        GetComponent<Rigidbody>().isKinematic = false;
-        gameObject.transform.position = startPosition;
         
+        gameObject.transform.position = startPosition;
+        gameObject.transform.rotation = startRotation;
+        ScoreImpact = true;
     }
 
     public void showValue()

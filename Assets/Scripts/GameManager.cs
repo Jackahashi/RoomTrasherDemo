@@ -7,20 +7,24 @@ public class GameManager : MonoBehaviour {
 
     public LightsController[] lighting;
     public GameObject[] Stage2Items;
+    public ObjectScript objectscript;
     public UIAlphaController stage2UI;
-    public Timer timerScript;
-    public static int score;
-    public static int requiredScore = 200;
-    public int restarts = 0;
+    
+    public int score;
+    public static int requiredScore = 150;
+
     private float delayTimerDelay;
+
+        public Timer timerScript;
+    public Totalizer totalizer;
+    public GameObject scoreBoard;
 
     AudioSource audioSource;
     public AudioClip sfxStageComplete;
     public AudioClip sfxTimerStart;
     public AudioClip sfxFail;
 
-    public ObjectScript objectscript;
-    public Totalizer totalizer;
+
     
 
 
@@ -29,10 +33,12 @@ public class GameManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         timerScript = timerScript.GetComponent<Timer>();
         totalizer = totalizer.GetComponent<Totalizer>();
+        scoreBoard = GameObject.Find("ScoreBoardPanel");
         totalizer.enabled = false;
         timerScript.enabled = false;
         score = 0;
         delayTimerDelay = 3.0f;
+        scoreBoard.SetActive(false);
     }
 
     public void scorePoints(int amount)
@@ -56,9 +62,9 @@ public class GameManager : MonoBehaviour {
             item.SetActive(true);
             Debug.Log("stage2 items activated");
         }
-        //re enable the hammers
+        //re enable the hammers?
         ResetTimer();
-        // stage one objects should fade away maybe?
+        // stage one objects should dissapear or fade away maybe?
     }
     IEnumerator DelayLevel2Items()
     {
@@ -68,14 +74,12 @@ public class GameManager : MonoBehaviour {
 
     //---------------------------------------------------------------------------------------------------------
 
-
-
     public void OutOfTime()
     {
         audioSource.PlayOneShot(sfxFail);
         Debug.Log("Out of time");
         timerScript.enabled = false;
-        //disable the hammers
+        //disable the hammers?
         CountTheScore();
         Debug.Log("The score is actually " + score);
     }
@@ -83,12 +87,6 @@ public class GameManager : MonoBehaviour {
     public void CountTheScore() {
 
         StartCoroutine(ScoreCountActions());
-        //Start coroutine WITH delay 2 or 3 seconds for dollar particles to complete 
-        // at the end of the delay , begin the counting of the score 
-       
-        // start counting the score, ideally this would use update to count the score from '0' to 'score'
-        // activate the score counting script , which will in turn access the high score + display the UI + play counting sound
-
     }
     IEnumerator ScoreCountActions()
     {
@@ -101,45 +99,52 @@ public class GameManager : MonoBehaviour {
                 objectscript.showValue();
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
+        scoreBoard.SetActive(true);
         totalizer.enabled = true;
-        // activate the score counter script and UI (the score counter will call the score check function)
-
     }
 
     //----------------------------------------------------------------------------------------------------------------------------
 
 
-    // make sure nothing else happends during this process
     public void CheckTheScore()
     {
         Debug.Log("Checking the score");
         if (score > requiredScore)
         {
-            StartCoroutine(ScoreDisplayDelay());
-            //Make score green and 
-            // play success sound
-   
-            //SteamVR_LoadLevel// trigger end of onboarding -functions 
+            totalizer.ChangeTextColour(Color.green);
+            StartCoroutine(ScoreCheckPassDelay());
+            
+            //Make score green and totalizer.ChangeTextAppearence();
+            SteamVR_LoadLevel.Begin("Level1");
         } else
         {
+            totalizer.ChangeTextColour(Color.red);
+            StartCoroutine(ScoreCheckFailDelay());
             
-            StartCoroutine(ScoreDisplayDelay());
-            delayTimerDelay = 4.0f;
-            ResetTimer();
         }
         
     }
-    IEnumerator ScoreDisplayDelay()
+    IEnumerator ScoreCheckPassDelay()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
+        audioSource.PlayOneShot(sfxStageComplete);
+        //steamvr loadlevel
+    }
+    IEnumerator ScoreCheckFailDelay()
+    {
+        yield return new WaitForSeconds(5);
+        delayTimerDelay = 4.0f;
+        ResetTimer();
+       
     }
 
-
+    //--------------------------------------------------------------------------------------------------------------------------
     public void ResetTimer()
     {
         Debug.Log("Timer resetting, objs should reposition");
         totalizer.enabled = false;
+        scoreBoard.SetActive(false);
         score = 0;
         StartCoroutine(DelayTimerStart());
         

@@ -18,13 +18,16 @@ public class Totalizer : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        // auto populate the gamemanager
     }
 
     private void OnEnable()
     {
-        scoreBoardScore = 000000;
+        scoreBoardScore = 00000;
         Debug.Log("totalizer enabled");
-        InvokeRepeating("ShowTheScore", 1, 0.5f);
+        InvokeRepeating("ShowTheScore", 0.05f, 0.05f);
     }
 
 
@@ -32,20 +35,35 @@ public class Totalizer : MonoBehaviour
     void ShowTheScore()
     {
 
-        scoreBoard.text = scoreBoardScore.ToString("000");
+        scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
         Debug.Log("updating the score");
-        while (scoreBoardScore < GameManager.score)
+        if (scoreBoardScore < gamemanager.score)
         {
             scoreBoardScore++;
+            audioSource.PlayOneShot(sfxCoin);
         }
 
-        if (scoreBoardScore == GameManager.score)
+        if (scoreBoardScore >= gamemanager.score)
         {
-            CancelInvoke();
             gamemanager.CheckTheScore();
-
+            StartCoroutine(ScoreDisplayDelay());
+            
+            
         }
 
+    }
+
+    IEnumerator ScoreDisplayDelay()
+    {
+        scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
+        yield return new WaitForSeconds(5);
+        CancelInvoke();
+        
+    }
+
+    public void ChangeTextColour(Color newColor)
+    {
+        scoreBoard.color = newColor;
     }
 
 }
