@@ -53,7 +53,7 @@ public class ObjectScript : MonoBehaviour
 
             if (collision.gameObject.tag != "Hammer")
             {
-                if (collision.relativeVelocity.magnitude > 1)
+                if (collision.relativeVelocity.magnitude > 2)
                 {
                     audioSource.PlayOneShot(sfxImpact);
 
@@ -84,18 +84,33 @@ public class ObjectScript : MonoBehaviour
 
     }
 
+    private void OnCollisionStay(Collision other)
+    {
+        if(other.gameObject.tag == "Hammer")
+        {
+            // increase the hammer count +1
+            // while hammer count is greater than 1, the object is a child of the hammers and can be thrown?
+            // if hammer count drops below 2 , release the object with velocity and angular velocity  
+        }
+    }
+
     public void StartingPositions()
     {
         
         gameObject.transform.position = startPosition;
         gameObject.transform.rotation = startRotation;
+        // maybe a delay needed here
         ScoreImpact = true;
     }
 
     public void showValue()
     {
-        Debug.Log("Dollar Values showing");
-        Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
+        if(ScoreImpact != true)
+        {
+            Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
+        }
+       
+       
       
     }
 }

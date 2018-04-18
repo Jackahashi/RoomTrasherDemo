@@ -5,13 +5,15 @@ using UnityEngine;
 public class Hammer : MonoBehaviour {
 
     AudioSource audioSource;
+    BoxCollider hammerCollider;
 
     public GameObject particleSystemPrefab;
 
     public AudioClip sfxHammer;
 
     void Start () {
-        audioSource = GetComponent<AudioSource>(); 
+        audioSource = GetComponent<AudioSource>();
+        hammerCollider = GetComponent<BoxCollider>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -22,6 +24,8 @@ public class Hammer : MonoBehaviour {
             Instantiate(particleSystemPrefab, contact.point, Quaternion.identity);
         }
     }
+
+    
 }
 
 

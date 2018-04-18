@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public UIAlphaController stage2UI;
     
     public int score;
-    public static int requiredScore = 150;
+    public static int requiredScore = 120;
 
     private float delayTimerDelay;
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     public AudioClip sfxStageComplete;
     public AudioClip sfxTimerStart;
     public AudioClip sfxFail;
+    public AudioClip sfxReset;
 
 
     
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour {
         if (score > requiredScore)
         {
             totalizer.ChangeTextColour(Color.green);
+            audioSource.PlayOneShot(sfxStageComplete);
             StartCoroutine(ScoreCheckPassDelay());
             
             //Make score green and totalizer.ChangeTextAppearence();
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour {
         } else
         {
             totalizer.ChangeTextColour(Color.red);
+            audioSource.PlayOneShot(sfxFail);
             StartCoroutine(ScoreCheckFailDelay());
             
         }
@@ -127,9 +130,10 @@ public class GameManager : MonoBehaviour {
     }
     IEnumerator ScoreCheckPassDelay()
     {
+        
+        
         yield return new WaitForSeconds(5);
-        audioSource.PlayOneShot(sfxStageComplete);
-        //steamvr loadlevel
+        SteamVR_LoadLevel.Begin("Level1");
     }
     IEnumerator ScoreCheckFailDelay()
     {
@@ -155,6 +159,7 @@ public class GameManager : MonoBehaviour {
             if (objectscript != null)
             {
                 objectscript.StartingPositions();
+                audioSource.PlayOneShot(sfxReset);
 
             }
         }
@@ -165,8 +170,9 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(delayTimerDelay);
         audioSource.PlayOneShot(sfxTimerStart);
 
-        yield return new WaitForSeconds(3.3f);
+        yield return new WaitForSeconds(4f);
         Debug.Log("Timer starting");
+        // enable hammers
         timerScript.enabled = true;
     }
 

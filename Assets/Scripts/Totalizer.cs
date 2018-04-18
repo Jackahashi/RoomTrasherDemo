@@ -27,7 +27,7 @@ public class Totalizer : MonoBehaviour
     {
         scoreBoardScore = 00000;
         Debug.Log("totalizer enabled");
-        InvokeRepeating("ShowTheScore", 0.05f, 0.05f);
+        InvokeRepeating("ShowTheScore", 0.02f, 0.02f);
     }
 
 
@@ -47,17 +47,19 @@ public class Totalizer : MonoBehaviour
         {
             gamemanager.CheckTheScore();
             StartCoroutine(ScoreDisplayDelay());
-            
-            
+            CancelInvoke();
+
+
         }
 
     }
 
     IEnumerator ScoreDisplayDelay()
+
     {
         scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
         yield return new WaitForSeconds(5);
-        CancelInvoke();
+        
         
     }
 
