@@ -18,7 +18,6 @@ using UnityEngine.UI;
     AudioSource audioSource;
 
     public AudioClip sfxTimerChime;
-    public AudioClip sfxTimerTick;
 
     void Start()
     {
@@ -43,34 +42,23 @@ using UnityEngine.UI;
                 milliTimer.text = miliseconds.ToString("00");
                 SecsTimer.text = seconds.ToString("10");
                 return;
-                
-                //minutes--;
-                //seconds = 59;
             }
             else if (seconds >= 0)
             {
-                seconds--;
-                
+                seconds--; 
             }
 
-            
             miliseconds = 100;
-            // maybe play a Tick noise?
         }
 
         if (seconds == 3 && miliseconds == 100 )
         {
             Debug.Log("3 seconds left");
             PlayChime();
-            // maybe start a coroutine
         }
-
-
-
 
         miliseconds -= Time.deltaTime * 100;
 
-        //Debug.Log(string.Format("{0}:{1}:{2}", minutes, seconds, (int)miliseconds));
         minsTimer.text = minutes.ToString("00");
         SecsTimer.text = seconds.ToString("00");
         milliTimer.text = miliseconds.ToString("00");

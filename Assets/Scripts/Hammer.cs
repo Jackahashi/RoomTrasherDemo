@@ -5,7 +5,6 @@ using UnityEngine;
 public class Hammer : MonoBehaviour {
 
     AudioSource audioSource;
-    BoxCollider hammerCollider;
 
     public GameObject particleSystemPrefab;
 
@@ -13,19 +12,21 @@ public class Hammer : MonoBehaviour {
 
     void Start () {
         audioSource = GetComponent<AudioSource>();
-        hammerCollider = GetComponent<BoxCollider>();
+       
     }
 
-    void OnCollisionEnter(Collision collision)
+
+        void OnCollisionEnter(Collision collision)
     {
         audioSource.PlayOneShot(sfxHammer);
+        //device.TriggerHapticPulse(2000);
         foreach (ContactPoint contact in collision.contacts)
         {
             Instantiate(particleSystemPrefab, contact.point, Quaternion.identity);
         }
     }
 
-    
+
 }
 
 

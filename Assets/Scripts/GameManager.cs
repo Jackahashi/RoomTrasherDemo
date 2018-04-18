@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public UIAlphaController stage2UI;
     
     public int score;
-    public static int requiredScore = 120;
+    public static int requiredScore = 160;
 
     private float delayTimerDelay;
 
@@ -20,16 +20,17 @@ public class GameManager : MonoBehaviour {
     public GameObject scoreBoard;
 
     AudioSource audioSource;
-    public AudioClip sfxStageComplete;
+    public AudioSource failAudioSource;
+    public AudioClip sfxStageOneComplete;
+    public AudioClip sfxStageTwoComplete;
     public AudioClip sfxTimerStart;
+    public AudioClip sfxTimerEnd;
     public AudioClip sfxFail;
     public AudioClip sfxReset;
-
-
     
 
-
     void Start () {
+        
         Stage2Items = GameObject.FindGameObjectsWithTag("SecondStageItems");
         audioSource = GetComponent<AudioSource>();
         timerScript = timerScript.GetComponent<Timer>();
@@ -47,13 +48,14 @@ public class GameManager : MonoBehaviour {
         score += amount;
     }
 
-    //--------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------end stage one------------------------------------------
 
     public void EndStageOne()
     {
         StartCoroutine(DelayLevel2Items());
         score = 0;
         stage2UI.FadeUp();
+    
         foreach(LightsController light in lighting)
         {
             light.FadeUp();
@@ -61,28 +63,29 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject item in Stage2Items)
         {
             item.SetActive(true);
-            Debug.Log("stage2 items activated");
         }
-        //re enable the hammers?
         ResetTimer();
         // stage one objects should dissapear or fade away maybe?
     }
     IEnumerator DelayLevel2Items()
     {
         yield return new WaitForSeconds(0.5f);
-        audioSource.PlayOneShot(sfxStageComplete); 
+        audioSource.PlayOneShot(sfxStageOneComplete); 
     }
 
-    //---------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------out of time and count the score--------------------------------------------------
 
     public void OutOfTime()
     {
-        audioSource.PlayOneShot(sfxFail);
-        Debug.Log("Out of time");
+        audioSource.PlayOneShot(sfxTimerEnd);
+        foreach (GameObject obj in Stage2Items)
+        {
+            obj.layer = 9;
+
+        }
         timerScript.enabled = false;
-        //disable the hammers?
+
         CountTheScore();
-        Debug.Log("The score is actually " + score);
     }
 
     public void CountTheScore() {
@@ -105,33 +108,26 @@ public class GameManager : MonoBehaviour {
         totalizer.enabled = true;
     }
 
-    //----------------------------------------------------------------------------------------------------------------------------
-
-
+    //---------------------------------------------------score checker-------------------------------------------------------------------------
     public void CheckTheScore()
     {
-        Debug.Log("Checking the score");
         if (score > requiredScore)
         {
             totalizer.ChangeTextColour(Color.green);
-            audioSource.PlayOneShot(sfxStageComplete);
             StartCoroutine(ScoreCheckPassDelay());
-            
-            //Make score green and totalizer.ChangeTextAppearence();
-            SteamVR_LoadLevel.Begin("Level1");
+
         } else
         {
             totalizer.ChangeTextColour(Color.red);
-            audioSource.PlayOneShot(sfxFail);
+            failAudioSource.PlayOneShot(sfxFail);
             StartCoroutine(ScoreCheckFailDelay());
             
         }
-        
     }
     IEnumerator ScoreCheckPassDelay()
     {
-        
-        
+        yield return new WaitForSeconds(1);
+        audioSource.PlayOneShot(sfxStageTwoComplete);
         yield return new WaitForSeconds(5);
         SteamVR_LoadLevel.Begin("Level1");
     }
@@ -140,13 +136,12 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(5);
         delayTimerDelay = 4.0f;
         ResetTimer();
-       
+        audioSource.PlayOneShot(sfxReset);
     }
 
-    //--------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------reset timer---------------------------------------------------------------------
     public void ResetTimer()
     {
-        Debug.Log("Timer resetting, objs should reposition");
         totalizer.enabled = false;
         scoreBoard.SetActive(false);
         score = 0;
@@ -154,25 +149,27 @@ public class GameManager : MonoBehaviour {
         
         foreach (GameObject item in Stage2Items)
         {
-
+            item.layer = 9;
             objectscript = item.GetComponent<ObjectScript>();
             if (objectscript != null)
             {
                 objectscript.StartingPositions();
-                audioSource.PlayOneShot(sfxReset);
+                
 
             }
         }
     }
     IEnumerator DelayTimerStart()
     {
-        
+
         yield return new WaitForSeconds(delayTimerDelay);
         audioSource.PlayOneShot(sfxTimerStart);
 
         yield return new WaitForSeconds(4f);
-        Debug.Log("Timer starting");
-        // enable hammers
+        foreach (GameObject obj in Stage2Items)
+        {
+            obj.layer = 0;
+        }
         timerScript.enabled = true;
     }
 
