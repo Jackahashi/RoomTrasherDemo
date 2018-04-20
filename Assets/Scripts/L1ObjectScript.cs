@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectScript : MonoBehaviour
+public class L1ObjectScript : MonoBehaviour
 {
-    // store start pos and rotation
-
-    public GameManager gameManager;
+    public GameObject levelController;
+    public Level1Controller gameManager;
 
     public FloorScript floor;
     public AudioClip sfxImpact;
@@ -28,42 +27,31 @@ public class ObjectScript : MonoBehaviour
 
     private Rigidbody rb;
 
-
-
     private bool Hammer1Collided = false;
     private bool Hammer2Collided = false;
     private bool beingHeld = false;
 
     public float throwForce = 1;
 
-
     private bool ScoreImpact = true;
     private static bool musicPlaying = false;
 
-
    void Start()
     {
+        gameManager = levelController.GetComponent<Level1Controller>();
         audioSource = GetComponent<AudioSource>();
         startPosition = gameObject.transform.position;
         startRotation = gameObject.transform.rotation;
-
-        // record the original parent transform
     }
 
 
     void OnCollisionEnter(Collision collision)
     {
-
-        // future modification may be necessary for performance -->  if current position on y axis (height) is more than 0.2 from object start height , points can be scored
-        // the above script would detect if the object had moved from its start position (heingt) and than enable it to score points collisions
-        // public transform startposition;  // e.g. current distance to floor - if distance to floor changes by more than 0.1. set a bool to true to enable point scoring
-        //if else
-
         if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue" && !(musicPlaying))
         {
             //Debug.Log("Object hit floor");
             floor.PlayMusic();
-            gameManager.EndStageOne();
+            gameManager.StartLevel1();
             musicPlaying = true;
 
         }
@@ -103,9 +91,7 @@ public class ObjectScript : MonoBehaviour
                 }
             }
         }
-  
     }
-
    /* public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.name == "Right Hammer")
@@ -147,12 +133,8 @@ public class ObjectScript : MonoBehaviour
         {
             Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
         }
-       
-       
-      
+
     }
-
-
 }
 
 

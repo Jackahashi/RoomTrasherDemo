@@ -21,6 +21,10 @@ using UnityEngine.UI;
 
     void Start()
     {
+        if(gamemanager == null)
+        {
+            gamemanager = GameObject.Find("LevelController").GetComponent<Level1Controller>();
+        }
         audioSource = GetComponent<AudioSource>();
         seconds = 10;
         miliseconds = 0;

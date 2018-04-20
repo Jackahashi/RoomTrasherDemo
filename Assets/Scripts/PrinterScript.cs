@@ -9,13 +9,18 @@ public class PrinterScript : MonoBehaviour {
 
    public GameObject Paper;
 
+    AudioSource audioSource;
+
+    public AudioClip sfxPrinting;
+
 
     private float cooldown;
     private float cooldownLength = 1;
 
     private void Start()
     {
-        
+       audioSource = GetComponentInChildren<AudioSource>();
+       audioSource.PlayOneShot(sfxPrinting);
     }
 
     void FixedUpdate()

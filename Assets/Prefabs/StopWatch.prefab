@@ -519,7 +519,6 @@ MonoBehaviour:
   milliTimer: {fileID: 114340167814077358}
   seconds: 10
   sfxTimerChime: {fileID: 8300000, guid: c17f38f8e7b5f4a1495fda840fbe7ccc, type: 3}
-  sfxTimerTick: {fileID: 0}
 --- !u!114 &114910730915043042
 MonoBehaviour:
   m_ObjectHideFlags: 1
