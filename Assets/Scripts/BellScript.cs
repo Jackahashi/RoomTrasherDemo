@@ -14,7 +14,7 @@ public class BellScript : MonoBehaviour {
 
     
 
-    public Level1Controller gameManager;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class BellScript : MonoBehaviour {
         {
             rb.useGravity = true;
             audioSource.PlayOneShot(sfxBell);
-            gameManager.StartLevel1();
+            gameManager.ResetTimer();
             StartCoroutine(DestroyBell());
         }
 

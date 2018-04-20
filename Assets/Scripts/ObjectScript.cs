@@ -43,6 +43,11 @@ public class ObjectScript : MonoBehaviour
 
    void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        particleSystemPrefab = Resources.Load("PowHit") as GameObject;
+        moneyParticle = Resources.Load("Assets/Prefabs/MoneyParticle") as GameObject;
+        sfxImpact = Resources.Load("Assets/Sounds/Cropped_Impacts_Extension-I_163-[AudioTrimmer.com]") as AudioClip;
+        sfxMoney = Resources.Load("Sounds/Coin Award 2") as AudioClip;
         audioSource = GetComponent<AudioSource>();
         startPosition = gameObject.transform.position;
         startRotation = gameObject.transform.rotation;
@@ -59,12 +64,14 @@ public class ObjectScript : MonoBehaviour
         // public transform startposition;  // e.g. current distance to floor - if distance to floor changes by more than 0.1. set a bool to true to enable point scoring
         //if else
 
-        if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue" && !(musicPlaying))
+        if (!(musicPlaying))
         {
-            //Debug.Log("Object hit floor");
-            floor.PlayMusic();
-            gameManager.EndStageOne();
-            musicPlaying = true;
+            if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue")
+            {
+                floor.PlayMusic();
+                gameManager.EndStageOne();
+                musicPlaying = true;
+            }
 
         }
        if (collision.gameObject.tag == "Hammer")

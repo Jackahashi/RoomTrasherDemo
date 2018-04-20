@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour {
 
     private float delayTimerDelay;
 
-        public Timer timerScript;
+    public Timer timerScript;
     public Totalizer totalizer;
     public GameObject scoreBoard;
 
@@ -27,10 +28,12 @@ public class GameManager : MonoBehaviour {
     public AudioClip sfxTimerEnd;
     public AudioClip sfxFail;
     public AudioClip sfxReset;
+
+    public int buildIndex;
     
 
     void Start () {
-        
+        buildIndex = SceneManager.GetActiveScene().buildIndex;
         Stage2Items = GameObject.FindGameObjectsWithTag("SecondStageItems");
         audioSource = GetComponent<AudioSource>();
         timerScript = timerScript.GetComponent<Timer>();
@@ -41,6 +44,13 @@ public class GameManager : MonoBehaviour {
         score = 0;
         delayTimerDelay = 3.0f;
         scoreBoard.SetActive(false);
+        if(buildIndex == 1)
+        {
+            foreach (GameObject obj in Stage2Items)
+            {
+                obj.layer = 9;
+            }
+        }
     }
 
     public void scorePoints(int amount)
@@ -55,11 +65,11 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(DelayLevel2Items());
         score = 0;
         stage2UI.FadeUp();
-    
-        foreach(LightsController light in lighting)
+        foreach (LightsController light in lighting)
         {
-            light.FadeUp();
+          light.FadeUp();
         }
+ 
         foreach (GameObject item in Stage2Items)
         {
             item.SetActive(true);
@@ -81,10 +91,8 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject obj in Stage2Items)
         {
             obj.layer = 9;
-
         }
         timerScript.enabled = false;
-
         CountTheScore();
     }
 
@@ -111,7 +119,7 @@ public class GameManager : MonoBehaviour {
     //---------------------------------------------------score checker-------------------------------------------------------------------------
     public void CheckTheScore()
     {
-        if (score > requiredScore)
+        if (score >= requiredScore)
         {
             totalizer.ChangeTextColour(Color.green);
             StartCoroutine(ScoreCheckPassDelay());
@@ -121,7 +129,6 @@ public class GameManager : MonoBehaviour {
             totalizer.ChangeTextColour(Color.red);
             failAudioSource.PlayOneShot(sfxFail);
             StartCoroutine(ScoreCheckFailDelay());
-            
         }
     }
     IEnumerator ScoreCheckPassDelay()
@@ -142,6 +149,10 @@ public class GameManager : MonoBehaviour {
     //-----------------------------------------------------reset timer---------------------------------------------------------------------
     public void ResetTimer()
     {
+        if (buildIndex == 1)
+        {
+            Debug.Log("StartingLevel1");
+        }
         totalizer.enabled = false;
         scoreBoard.SetActive(false);
         score = 0;
@@ -154,14 +165,11 @@ public class GameManager : MonoBehaviour {
             if (objectscript != null)
             {
                 objectscript.StartingPositions();
-                
-
             }
         }
     }
     IEnumerator DelayTimerStart()
     {
-
         yield return new WaitForSeconds(delayTimerDelay);
         audioSource.PlayOneShot(sfxTimerStart);
 
