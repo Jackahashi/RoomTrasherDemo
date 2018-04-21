@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] Stage2Items;
     public ObjectScript objectscript;
     public UIAlphaController stage2UI;
-    
+
     public int score;
     public static int requiredScore = 160;
 
@@ -32,8 +32,14 @@ public class GameManager : MonoBehaviour {
 
     public int buildIndex;
 
+    public Text ResetText;
+
     public Text highScoreText;
     public static int highscore;
+    public PrinterScript printerScript;
+    public GameObject Bell;
+
+
 
     void Start () {
         buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -50,7 +56,7 @@ public class GameManager : MonoBehaviour {
         if(buildIndex == 1)
         {
             
-
+            printerScript = GameObject.Find("Printer").GetComponentInChildren<PrinterScript>();
             highscore = PlayerPrefs.GetInt("highscore", highscore);
             highScoreText.text = ("$" + (highscore.ToString()));
 
@@ -122,6 +128,11 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         scoreBoard.SetActive(true);
         totalizer.enabled = true;
+        if (buildIndex == 1)
+        {
+            printerScript.enabled = false;
+        }
+
     }
 
     //---------------------------------------------------score checker-------------------------------------------------------------------------
@@ -139,7 +150,8 @@ public class GameManager : MonoBehaviour {
                 PlayerPrefs.SetInt("highscore", highscore);
                 PlayerPrefs.Save();
             }
-            Debug.Log("Show Reset UI BEll");
+            StartCoroutine(Level1EndDelay());
+            
             // maybe do something else instead of comparing score values - ensure score remains visible
             // trigger reset UI 
         } else
@@ -169,13 +181,19 @@ public class GameManager : MonoBehaviour {
         ResetTimer();
         audioSource.PlayOneShot(sfxReset);
     }
+    IEnumerator Level1EndDelay()
+    {
+        yield return new WaitForSeconds(2);
+        Bell.SetActive(true);
+        ResetText.text = ("TRY AGAIN");
+    }
 
     //-----------------------------------------------------reset timer---------------------------------------------------------------------
     public void ResetTimer()
     {
         if (buildIndex == 1)
         {
-            Debug.Log("StartingLevel1");
+            printerScript.enabled = true;
         }
         totalizer.enabled = false;
         scoreBoard.SetActive(false);
@@ -196,6 +214,7 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(delayTimerDelay);
         audioSource.PlayOneShot(sfxTimerStart);
+
 
         yield return new WaitForSeconds(4f);
         foreach (GameObject obj in Stage2Items)

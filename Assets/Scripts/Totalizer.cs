@@ -47,8 +47,7 @@ public class Totalizer : MonoBehaviour
                 scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
                 gamemanager.CheckTheScore();
                 CancelInvoke();
-                // experiment with what happens here - will the socre stay visible after cancel invoke
-                //can we make it remain visible 
+               
             }
 
             if (gamemanager.buildIndex == 0)

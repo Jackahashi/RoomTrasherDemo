@@ -6,17 +6,13 @@ using UnityEngine.UI;
      public class Timer : MonoBehaviour
 {
     public GameManager gamemanager;
-
-
     public Text minsTimer;
     public Text SecsTimer;
     public Text milliTimer;
     float minutes = 0;
     public float seconds = 10;
     float miliseconds = 0;
-
     AudioSource audioSource;
-
     public AudioClip sfxTimerChime;
 
     void Start()

@@ -13,6 +13,7 @@ TagManager:
   - SecondStageItems
   - StartUI
   - HighScoreText
+  - ResetUI
   layers:
   - Default
   - TransparentFX

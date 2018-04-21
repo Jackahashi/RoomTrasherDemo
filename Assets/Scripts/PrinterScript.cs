@@ -11,27 +11,34 @@ public class PrinterScript : MonoBehaviour {
 
     AudioSource audioSource;
 
-    public AudioClip sfxPrinting;
-
-
     private float cooldown;
     private float cooldownLength = 1;
+    
 
-    private void Start()
+    private void OnEnable()
     {
        audioSource = GetComponentInChildren<AudioSource>();
-       audioSource.PlayOneShot(sfxPrinting);
+        audioSource.Play();
+        
+       
     }
 
-    void FixedUpdate()
+    private void OnDisable()
     {
-        cooldown -= Time.deltaTime;
+        audioSource.Stop();
+    }
 
-        if (cooldown <= 0)
-        {
-            cooldown = cooldownLength;
-            InstantiatePaper();
-        }
+    void Update()
+    {
+
+            cooldown -= Time.deltaTime;
+
+            if (cooldown <= 0)
+            {
+                cooldown = cooldownLength;
+                InstantiatePaper();
+            }
+
     }
 
 

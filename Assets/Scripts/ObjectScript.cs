@@ -7,34 +7,29 @@ public class ObjectScript : MonoBehaviour
     // store start pos and rotation
 
     public GameManager gameManager;
-
     public FloorScript floor;
     public AudioClip sfxImpact;
     public AudioClip sfxMoney;
-    AudioSource audioSource;
     public GameObject particleSystemPrefab;
     public GameObject moneyParticle;
     public GameObject dollarParticle;
-
     public int scoreValue;
-
-    //private static int hammerCount;
-
-    float t;
+    private bool ScoreImpact = true;
+    private static bool musicPlaying = false;
     Vector3 startPosition;
-    public Quaternion startRotation;
-    float timeToMove = 2000;
+    Quaternion startRotation;
+    AudioSource audioSource;
 
     //private Rigidbody rb;
     //private bool Hammer1Collided = false;
     //private bool Hammer2Collided = false;
     //private bool beingHeld = false;
     //public float throwForce = 1;
-    private bool ScoreImpact = true;
-    private static bool musicPlaying = false;
+    //private static int hammerCount;
 
 
-   void Start()
+
+    void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
