@@ -12,6 +12,7 @@ TagManager:
   - FirstStatue
   - SecondStageItems
   - StartUI
+  - HighScoreText
   layers:
   - Default
   - TransparentFX

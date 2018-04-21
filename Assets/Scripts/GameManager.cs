@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -30,7 +31,9 @@ public class GameManager : MonoBehaviour {
     public AudioClip sfxReset;
 
     public int buildIndex;
-    
+
+    public Text highScoreText;
+    public static int highscore;
 
     void Start () {
         buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -46,6 +49,11 @@ public class GameManager : MonoBehaviour {
         scoreBoard.SetActive(false);
         if(buildIndex == 1)
         {
+            
+
+            highscore = PlayerPrefs.GetInt("highscore", highscore);
+            highScoreText.text = ("$" + (highscore.ToString()));
+
             foreach (GameObject obj in Stage2Items)
             {
                 obj.layer = 9;
@@ -119,6 +127,22 @@ public class GameManager : MonoBehaviour {
     //---------------------------------------------------score checker-------------------------------------------------------------------------
     public void CheckTheScore()
     {
+
+        if (buildIndex >= 1)
+        {
+            if (score > highscore)
+            {
+                totalizer.ChangeTextColour(Color.green);
+                highscore = score;
+                highScoreText.text = ("$" + ("" + score)); 
+
+                PlayerPrefs.SetInt("highscore", highscore);
+                PlayerPrefs.Save();
+            }
+            Debug.Log("Show Reset UI BEll");
+            // maybe do something else instead of comparing score values - ensure score remains visible
+            // trigger reset UI 
+        } else
         if (score >= requiredScore)
         {
             totalizer.ChangeTextColour(Color.green);
@@ -180,8 +204,5 @@ public class GameManager : MonoBehaviour {
         }
         timerScript.enabled = true;
     }
-
-
-
 
 }

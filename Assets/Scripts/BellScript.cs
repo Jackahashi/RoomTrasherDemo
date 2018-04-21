@@ -12,8 +12,8 @@ public class BellScript : MonoBehaviour {
 
     public GameObject[] StartUiItems;
 
-    
 
+    private bool beenHit;
     public GameManager gameManager;
 
     private void Start()
@@ -23,16 +23,24 @@ public class BellScript : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
     }
 
+    private void OnEnable()
+    {
+        beenHit = false;
+    }
+
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Hammer")
+        if (!(beenHit))
         {
-            rb.useGravity = true;
-            audioSource.PlayOneShot(sfxBell);
-            gameManager.ResetTimer();
-            StartCoroutine(DestroyBell());
+            if (other.relativeVelocity.magnitude > 0.5f)
+            {
+                beenHit = true;
+                rb.useGravity = true;
+                audioSource.PlayOneShot(sfxBell);
+                gameManager.ResetTimer();
+                StartCoroutine(DestroyBell());
+            }
         }
-
     }
 
 

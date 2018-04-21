@@ -23,20 +23,13 @@ public class ObjectScript : MonoBehaviour
     float t;
     Vector3 startPosition;
     public Quaternion startRotation;
- 
     float timeToMove = 2000;
 
-    private Rigidbody rb;
-
-
-
-    private bool Hammer1Collided = false;
-    private bool Hammer2Collided = false;
-    private bool beingHeld = false;
-
-    public float throwForce = 1;
-
-
+    //private Rigidbody rb;
+    //private bool Hammer1Collided = false;
+    //private bool Hammer2Collided = false;
+    //private bool beingHeld = false;
+    //public float throwForce = 1;
     private bool ScoreImpact = true;
     private static bool musicPlaying = false;
 
@@ -44,10 +37,6 @@ public class ObjectScript : MonoBehaviour
    void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        particleSystemPrefab = Resources.Load("PowHit") as GameObject;
-        moneyParticle = Resources.Load("Assets/Prefabs/MoneyParticle") as GameObject;
-        sfxImpact = Resources.Load("Assets/Sounds/Cropped_Impacts_Extension-I_163-[AudioTrimmer.com]") as AudioClip;
-        sfxMoney = Resources.Load("Sounds/Coin Award 2") as AudioClip;
         audioSource = GetComponent<AudioSource>();
         startPosition = gameObject.transform.position;
         startRotation = gameObject.transform.rotation;
@@ -59,14 +48,9 @@ public class ObjectScript : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        // future modification may be necessary for performance -->  if current position on y axis (height) is more than 0.2 from object start height , points can be scored
-        // the above script would detect if the object had moved from its start position (heingt) and than enable it to score points collisions
-        // public transform startposition;  // e.g. current distance to floor - if distance to floor changes by more than 0.1. set a bool to true to enable point scoring
-        //if else
-
-        if (!(musicPlaying))
+        if (gameObject.tag == "FirstStatue")
         {
-            if (collision.gameObject.tag == "Floor" && gameObject.tag == "FirstStatue")
+            if (collision.gameObject.tag == "Floor" && !(musicPlaying))
             {
                 floor.PlayMusic();
                 gameManager.EndStageOne();
@@ -92,7 +76,7 @@ public class ObjectScript : MonoBehaviour
         }
         else
         {
-            if (collision.relativeVelocity.magnitude > 1.2f)
+            if (collision.relativeVelocity.magnitude > 1)
             {
                 audioSource.PlayOneShot(sfxImpact);
                 foreach (ContactPoint contact in collision.contacts)

@@ -26,12 +26,9 @@ public class Totalizer : MonoBehaviour
     private void OnEnable()
     {
         scoreBoardScore = 00000;
-        Debug.Log("totalizer enabled");
         InvokeRepeating("ShowTheScore", 0.02f, 0.02f);
     }
 
-
-  
     void ShowTheScore()
     {
 
@@ -45,11 +42,23 @@ public class Totalizer : MonoBehaviour
 
         if (scoreBoardScore >= gamemanager.score)
         {
-            gamemanager.CheckTheScore();
-            StartCoroutine(ScoreDisplayDelay());
-            CancelInvoke();
+            if(gamemanager.buildIndex == 1)
+            {
+                scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
+                gamemanager.CheckTheScore();
+                CancelInvoke();
+                // experiment with what happens here - will the socre stay visible after cancel invoke
+                //can we make it remain visible 
+            }
 
-
+            if (gamemanager.buildIndex == 0)
+            {
+                gamemanager.CheckTheScore();
+                StartCoroutine(ScoreDisplayDelay());
+                CancelInvoke();
+            }
+            
+            
         }
 
     }
