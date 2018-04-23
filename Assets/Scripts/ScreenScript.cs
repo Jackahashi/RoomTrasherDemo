@@ -7,13 +7,19 @@ public class ScreenScript : MonoBehaviour {
 
     public GameObject videoPanel;
 
+    private VideoPlayer videoplayer;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 0.8f)
+        if (collision.relativeVelocity.magnitude > 0.5f)
         {
             videoPanel.SetActive(false);
+            
         }
     }
+
+
+
 
 
 }

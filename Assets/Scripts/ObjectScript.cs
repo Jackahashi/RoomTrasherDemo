@@ -35,8 +35,8 @@ public class ObjectScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         startPosition = gameObject.transform.position;
         startRotation = gameObject.transform.rotation;
-
-        // record the original parent transform
+       // Debug.Log(gameObject.name + " position at start function " + startPosition);
+        
     }
 
 
@@ -122,8 +122,11 @@ public class ObjectScript : MonoBehaviour
     public void StartingPositions()
     {
         
+       // Debug.Log(gameObject.name + " current position " + gameObject.transform.position);
+       // Debug.Log(gameObject.name + " intended position" + startPosition);
         gameObject.transform.position = startPosition;
         gameObject.transform.rotation = startRotation;
+        //Debug.Log(gameObject.name + " Actual reset position " + gameObject.transform.position);
         ScoreImpact = true;
     }
 
@@ -132,9 +135,13 @@ public class ObjectScript : MonoBehaviour
         if(ScoreImpact != true)
         {
             Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
+
+            // sometimes this is instantiating waaay off e.g. table. Make the value appear from one of the colliders maybe?
         }
        
-       
+       // currently objects have trouble resetting because of thier parent obejcts 
+       //need to find a way to reset the parent obejct
+       // but ideally just the immediate parent object, not the root or other parents.
       
     }
 

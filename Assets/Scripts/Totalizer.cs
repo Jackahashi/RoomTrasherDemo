@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Totalizer : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class Totalizer : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip sfxCoin;
+    public int buildIndex;
 
     void Start()
     {
+        buildIndex = SceneManager.GetActiveScene().buildIndex;
         audioSource = GetComponent<AudioSource>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -26,14 +29,21 @@ public class Totalizer : MonoBehaviour
     private void OnEnable()
     {
         scoreBoardScore = 00000;
-        InvokeRepeating("ShowTheScore", 0.02f, 0.02f);
+        if (buildIndex == 1)
+        {
+            Debug.Log("fast score counting");
+            InvokeRepeating("ShowTheScore", 0.005f, 0.005f);
+        }
+        else { InvokeRepeating("ShowTheScore", 0.02f, 0.02f); }
+
+        
     }
 
     void ShowTheScore()
     {
 
         scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
-        Debug.Log("updating the score");
+        //Debug.Log("updating the score");
         if (scoreBoardScore < gamemanager.score)
         {
             scoreBoardScore++;

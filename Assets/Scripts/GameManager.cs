@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour {
     public PrinterScript printerScript;
     public GameObject Bell;
 
+    public GameObject[] screens;
+    
+
 
 
     void Start () {
@@ -59,11 +62,16 @@ public class GameManager : MonoBehaviour {
             printerScript = GameObject.Find("Printer").GetComponentInChildren<PrinterScript>();
             highscore = PlayerPrefs.GetInt("highscore", highscore);
             highScoreText.text = ("$" + (highscore.ToString()));
-
             foreach (GameObject obj in Stage2Items)
             {
                 obj.layer = 9;
+                
             }
+            foreach(GameObject screen in screens)
+            {
+                screen.SetActive(false);
+            }
+    
         }
     }
 
@@ -130,7 +138,12 @@ public class GameManager : MonoBehaviour {
         totalizer.enabled = true;
         if (buildIndex == 1)
         {
-            printerScript.enabled = false;
+            //printerScript.enabled = false;
+            foreach (GameObject screen in screens)
+            {
+                screen.SetActive(false);
+            }
+
         }
 
     }
@@ -151,9 +164,7 @@ public class GameManager : MonoBehaviour {
                 PlayerPrefs.Save();
             }
             StartCoroutine(Level1EndDelay());
-            
-            // maybe do something else instead of comparing score values - ensure score remains visible
-            // trigger reset UI 
+ 
         } else
         if (score >= requiredScore)
         {
@@ -193,7 +204,12 @@ public class GameManager : MonoBehaviour {
     {
         if (buildIndex == 1)
         {
-            printerScript.enabled = true;
+            //printerScript.enabled = true;
+            delayTimerDelay = 1;
+            foreach (GameObject screen in screens)
+            {
+                screen.SetActive(true);
+            }
         }
         totalizer.enabled = false;
         scoreBoard.SetActive(false);
@@ -206,6 +222,7 @@ public class GameManager : MonoBehaviour {
             objectscript = item.GetComponent<ObjectScript>();
             if (objectscript != null)
             {
+                Debug.Log("calling position reset script");
                 objectscript.StartingPositions();
             }
         }

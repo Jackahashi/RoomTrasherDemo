@@ -49,7 +49,7 @@ using UnityEngine.UI;
 
         if (seconds == 3 && miliseconds == 100 )
         {
-            Debug.Log("3 seconds left");
+            //Debug.Log("3 seconds left");
             PlayChime();
         }
 

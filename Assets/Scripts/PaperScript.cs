@@ -7,11 +7,12 @@ public class PaperScript : MonoBehaviour {
 
     Rigidbody rb;
 
-    
+    BoxCollider box;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        box = GetComponent<BoxCollider>();
     }
 
 
@@ -23,6 +24,7 @@ public class PaperScript : MonoBehaviour {
         else
         {
             rb.isKinematic = false;
+            box.enabled = true;
             gameObject.GetComponent<PaperScript>().enabled = false;
         }
 

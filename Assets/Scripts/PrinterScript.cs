@@ -9,7 +9,7 @@ public class PrinterScript : MonoBehaviour {
 
    public GameObject Paper;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     private float cooldown;
     private float cooldownLength = 1;
@@ -17,7 +17,7 @@ public class PrinterScript : MonoBehaviour {
 
     private void OnEnable()
     {
-       audioSource = GetComponentInChildren<AudioSource>();
+      
         audioSource.Play();
         
        

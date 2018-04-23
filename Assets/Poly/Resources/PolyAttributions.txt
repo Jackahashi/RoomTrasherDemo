@@ -66,6 +66,12 @@ URL: https://poly.google.com/view/dfL6q_VTWVf
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
+Title: Small Metal Table
+Author: Thomas DR
+URL: https://poly.google.com/view/3HuEZJbjgOJ
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: Storage
 Author: Poly by Google
 URL: https://poly.google.com/view/9plvQLFhacD
@@ -75,12 +81,6 @@ https://creativecommons.org/licenses/by/3.0/legalcode
 Title: Storage
 Author: Poly by Google
 URL: https://poly.google.com/view/6fTi-V3_UEv
-License: Creative Commons CC-BY
-https://creativecommons.org/licenses/by/3.0/legalcode
-
-Title: Television
-Author: Poly by Google
-URL: https://poly.google.com/view/6Fa29JN3A3F
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 

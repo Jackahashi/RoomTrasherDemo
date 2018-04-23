@@ -20,6 +20,7 @@ public class BellScript : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         startPosition = gameObject.transform.position;
         startRotation = gameObject.transform.rotation;
+        
     }
 
     private void OnEnable()
@@ -35,7 +36,7 @@ public class BellScript : MonoBehaviour {
     {
         if (!(beenHit))
         {
-                Debug.Log("HitAndGravityShouldChange");
+                //Debug.Log("HitAndGravityShouldChange");
                 beenHit = true;
                 rb.useGravity = true;
                 audioSource.PlayOneShot(sfxBell);
@@ -54,9 +55,16 @@ public class BellScript : MonoBehaviour {
         }
         yield return new WaitForSeconds(2);
         rb.useGravity = false;
-        gameObject.SetActive(false);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         gameObject.transform.position = startPosition;
         gameObject.transform.rotation = startRotation;
+        gameObject.SetActive(false);
+
+
+
+        // make sure velocity is zero so that it cant move unless hit by hammer
+        // currently the bell is being given velocity somehow
 
     }
 
