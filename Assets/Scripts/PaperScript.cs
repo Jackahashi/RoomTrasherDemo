@@ -23,8 +23,8 @@ public class PaperScript : MonoBehaviour {
         }
         else
         {
-            rb.isKinematic = false;
             transform.parent = null;
+            rb.isKinematic = false;
             box.enabled = true;
             gameObject.GetComponent<PaperScript>().enabled = false;
             StartCoroutine(KillPaper());

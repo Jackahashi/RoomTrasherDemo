@@ -33,7 +33,7 @@ public class Totalizer : MonoBehaviour
         if (gamemanager.buildIndex >= 1)
         {
             Debug.Log("fast score counting");
-            InvokeRepeating("ShowTheScore", 0.005f, 0.005f);
+            InvokeRepeating("ShowTheScore", 0.001f, 0.001f);
         }
         else { InvokeRepeating("ShowTheScore", 0.02f, 0.02f); }
 
@@ -44,7 +44,6 @@ public class Totalizer : MonoBehaviour
     {
 
         scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
-        //Debug.Log("updating the score");
         if (scoreBoardScore < gamemanager.score)
         {
             scoreBoardScore++;
@@ -60,15 +59,12 @@ public class Totalizer : MonoBehaviour
                 CancelInvoke();
                
             }
-
             if (gamemanager.buildIndex == 0)
             {
                 gamemanager.CheckTheScore();
                 StartCoroutine(ScoreDisplayDelay());
                 CancelInvoke();
             }
-            
-            
         }
 
     }
