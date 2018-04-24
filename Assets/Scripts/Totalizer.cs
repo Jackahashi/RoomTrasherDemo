@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Totalizer : MonoBehaviour
 {
@@ -15,11 +14,12 @@ public class Totalizer : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip sfxCoin;
-    public int buildIndex;
+   
+    
 
     void Start()
     {
-        buildIndex = SceneManager.GetActiveScene().buildIndex;
+        
         audioSource = GetComponent<AudioSource>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -28,8 +28,9 @@ public class Totalizer : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("build index is " + gamemanager.buildIndex);
         scoreBoardScore = 00000;
-        if (buildIndex == 1)
+        if (gamemanager.buildIndex >= 1)
         {
             Debug.Log("fast score counting");
             InvokeRepeating("ShowTheScore", 0.005f, 0.005f);

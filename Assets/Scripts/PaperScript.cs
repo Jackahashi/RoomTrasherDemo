@@ -24,9 +24,16 @@ public class PaperScript : MonoBehaviour {
         else
         {
             rb.isKinematic = false;
+            transform.parent = null;
             box.enabled = true;
             gameObject.GetComponent<PaperScript>().enabled = false;
+            StartCoroutine(KillPaper());
         }
 
+    }
+    IEnumerator KillPaper()
+    {
+        yield return new WaitForSeconds(4);
+        gameObject.SetActive(false);
     }
 }

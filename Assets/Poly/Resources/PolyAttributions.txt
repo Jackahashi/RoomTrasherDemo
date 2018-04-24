@@ -1,5 +1,11 @@
 This project uses the following items from Poly (http://poly.google.com):
 
+Title: Actiu - Tnk Flex
+Author: juan ramon candela
+URL: https://poly.google.com/view/erA2p9NUDNe
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: Bell
 Author: Poly by Google
 URL: https://poly.google.com/view/efbZhPRsTuD
@@ -9,6 +15,12 @@ https://creativecommons.org/licenses/by/3.0/legalcode
 Title: Camera
 Author: Poly by Google
 URL: https://poly.google.com/view/0nfSsetwy0Z
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Fire Extinguisher
+Author: Jarlan Perez
+URL: https://poly.google.com/view/71rR7PaeXNN
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
@@ -24,21 +36,33 @@ URL: https://poly.google.com/view/4h-eJ4xCsQa
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
+Title: Keyboard
+Author: Poly by Google
+URL: https://poly.google.com/view/3oFfQCSsUmQ
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: Monitor
 Author: Poly by Google
 URL: https://poly.google.com/view/8ql7Wf9pL_6
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
-Title: Printer
+Title: PC
 Author: Poly by Google
-URL: https://poly.google.com/view/7NKDv75jVeg
+URL: https://poly.google.com/view/aIwOp2HlyH-
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 
 Title: Printer
 Author: Mikael Ganehag Brorsson
 URL: https://poly.google.com/view/6uy3vUnmbCJ
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Rolling Music Speaker Stand
+Author: Peter Simcoe
+URL: https://poly.google.com/view/2QYyKRb68QD
 License: Creative Commons CC-BY
 https://creativecommons.org/licenses/by/3.0/legalcode
 

@@ -15,6 +15,7 @@ TagManager:
   - HighScoreText
   - ResetUI
   - Screen
+  - Paper
   layers:
   - Default
   - TransparentFX
@@ -27,8 +28,8 @@ TagManager:
   - Hammers
   - HammerCantHit
   - BellUI
-  - 
-  - 
+  - paper
+  - printer
   - 
   - 
   - 

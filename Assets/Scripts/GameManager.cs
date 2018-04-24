@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour {
         if(buildIndex == 1)
         {
             
-            printerScript = GameObject.Find("Printer").GetComponentInChildren<PrinterScript>();
+            printerScript = GameObject.Find("PrinterContainer").GetComponentInChildren<PrinterScript>();
             highscore = PlayerPrefs.GetInt("highscore", highscore);
             highScoreText.text = ("$" + (highscore.ToString()));
             foreach (GameObject obj in Stage2Items)
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour {
         totalizer.enabled = true;
         if (buildIndex == 1)
         {
-            //printerScript.enabled = false;
+            printerScript.enabled = false;
             foreach (GameObject screen in screens)
             {
                 screen.SetActive(false);
@@ -196,6 +196,7 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         Bell.SetActive(true);
+        Destroypapers();
         ResetText.text = ("TRY AGAIN");
     }
 
@@ -204,7 +205,7 @@ public class GameManager : MonoBehaviour {
     {
         if (buildIndex == 1)
         {
-            //printerScript.enabled = true;
+            printerScript.enabled = true;
             delayTimerDelay = 1;
             foreach (GameObject screen in screens)
             {
@@ -222,7 +223,6 @@ public class GameManager : MonoBehaviour {
             objectscript = item.GetComponent<ObjectScript>();
             if (objectscript != null)
             {
-                Debug.Log("calling position reset script");
                 objectscript.StartingPositions();
             }
         }
@@ -241,4 +241,10 @@ public class GameManager : MonoBehaviour {
         timerScript.enabled = true;
     }
 
+    private void Destroypapers()
+    {
+        GameObject[] papers = GameObject.FindGameObjectsWithTag("Paper");
+        foreach (GameObject paper in papers)
+            GameObject.Destroy(paper);
+    }
 }
