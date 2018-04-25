@@ -49,7 +49,7 @@ using UnityEngine.UI;
 
         if (seconds == 3 && miliseconds == 100 )
         {
-            //Debug.Log("3 seconds left");
+            
             PlayChime();
         }
 
@@ -62,6 +62,7 @@ using UnityEngine.UI;
 
     void PlayChime()
     {
+        StartCoroutine(AudioFadeOut.FadeOut(gamemanager.ExtraAudioSource, 10));
         audioSource.PlayOneShot(sfxTimerChime);
         StartCoroutine(DelayChimes());
     }

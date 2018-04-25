@@ -27,9 +27,14 @@ Mixed reality Video
 Spatial audio: (steam SDK) present in 3 AudioSources in on boarding scene
 
 
-Asset sources:
+Asset and script sources:
 
-potential music track: Stealing The Car by Tagirijus  non commercial $ licence, so fine if game is free, must be named in credits.
+audio fadeout script boris1998 unity answers
+
+
+ music track: Stealing The Car by Tagirijus  non commercial $ licence, so fine if game is free, must be named in credits.
+
+Music track: regards from mars by Enis
 
 Light fading script from TMartinez88 answers.unity.com
 

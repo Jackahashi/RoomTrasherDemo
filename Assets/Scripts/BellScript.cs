@@ -10,11 +10,15 @@ public class BellScript : MonoBehaviour {
     public GameManager gameManager;
     public GameObject[] StartUiItems;
     public AudioClip sfxBell;
+    public AudioClip sfxIntroMusic;
     Vector3 startPosition;
     Quaternion startRotation;
+    public AudioSource MusicAudio;
+    
 
     private void Start()
     {
+        
         StartUiItems = GameObject.FindGameObjectsWithTag("StartUI");
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
@@ -30,6 +34,8 @@ public class BellScript : MonoBehaviour {
         {
             item.SetActive(true);
         }
+        MusicAudio.PlayOneShot(sfxIntroMusic);
+        
     }
 
     void OnCollisionEnter(Collision other)
@@ -42,6 +48,7 @@ public class BellScript : MonoBehaviour {
                 audioSource.PlayOneShot(sfxBell);
                 gameManager.ResetTimer();
                 StartCoroutine(DestroyBell());
+            StartCoroutine(AudioFadeOut.FadeOut(MusicAudio, 3));
         }
     }
 
@@ -53,7 +60,7 @@ public class BellScript : MonoBehaviour {
         {
             item.SetActive(false);
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;

@@ -22,13 +22,14 @@ public class GameManager : MonoBehaviour {
     public GameObject scoreBoard;
 
     AudioSource audioSource;
-    public AudioSource failAudioSource;
+    public AudioSource ExtraAudioSource;
     public AudioClip sfxStageOneComplete;
     public AudioClip sfxStageTwoComplete;
     public AudioClip sfxTimerStart;
     public AudioClip sfxTimerEnd;
     public AudioClip sfxFail;
     public AudioClip sfxReset;
+    public AudioClip sfxLevel1Music;
 
     public int buildIndex;
 
@@ -172,7 +173,7 @@ public class GameManager : MonoBehaviour {
         } else
         {
             totalizer.ChangeTextColour(Color.red);
-            failAudioSource.PlayOneShot(sfxFail);
+            ExtraAudioSource.PlayOneShot(sfxFail);
             StartCoroutine(ScoreCheckFailDelay());
         }
     }
@@ -209,6 +210,7 @@ public class GameManager : MonoBehaviour {
             {
                 screen.SetActive(true);
             }
+            //ExtraAudioSource.PlayOneShot(sfxLevel1Music);
         }
         totalizer.enabled = false;
         scoreBoard.SetActive(false);
@@ -232,11 +234,13 @@ public class GameManager : MonoBehaviour {
 
 
         yield return new WaitForSeconds(4f);
+        ExtraAudioSource.PlayOneShot(sfxLevel1Music);
         foreach (GameObject obj in Stage2Items)
         {
             obj.layer = 0;
         }
         timerScript.enabled = true;
+        ExtraAudioSource.PlayOneShot(sfxLevel1Music);
     }
 
     private void Destroypapers()
