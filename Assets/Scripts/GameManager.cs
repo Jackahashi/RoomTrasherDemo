@@ -56,23 +56,22 @@ public class GameManager : MonoBehaviour {
         score = 0;
         delayTimerDelay = 3.0f;
         scoreBoard.SetActive(false);
-        if(buildIndex == 1)
+        foreach (GameObject obj in Stage2Items)
+        {
+            obj.layer = 9;
+        }
+
+        if (buildIndex == 1)
         {
             
             printerScript = GameObject.Find("PrinterContainer").GetComponentInChildren<PrinterScript>();
             highscore = PlayerPrefs.GetInt("highscore", highscore);
             highScoreText.text = ("$" + (highscore.ToString()));
-            foreach (GameObject obj in Stage2Items)
-            {
-                obj.layer = 9;
-                
-            }
-            foreach(GameObject screen in screens)
+            foreach (GameObject screen in screens)
             {
                 screen.SetActive(false);
             }
-    
-        }
+        } 
     }
 
     public void scorePoints(int amount)
@@ -87,14 +86,13 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(DelayLevel2Items());
         score = 0;
         stage2UI.FadeUp();
-        foreach (LightsController light in lighting)
-        {
-          light.FadeUp();
-        }
- 
         foreach (GameObject item in Stage2Items)
         {
             item.SetActive(true);
+        }
+        foreach (LightsController light in lighting)
+        {
+          light.FadeUp();
         }
         ResetTimer();
         // stage one objects should dissapear or fade away maybe?

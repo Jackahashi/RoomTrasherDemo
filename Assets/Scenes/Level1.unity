@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000062, guid: ad607149731a20343a88e9217fee7f96,
+  m_LightingDataAsset: {fileID: 112000002, guid: ad607149731a20343a88e9217fee7f96,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -456,39 +456,6 @@ Transform:
   m_Father: {fileID: 436242388}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &39998183
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &48870158
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,12 +635,17 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: Priority
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -843,7 +815,7 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
@@ -1305,12 +1277,17 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: Priority
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -2573,7 +2550,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.559
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2825,8 +2802,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4603479, y: 0.10506344, z: 0.4730513}
-  m_Center: {x: 0.18782127, y: -0.91709375, z: 0.032806754}
+  m_Size: {x: 0.34908283, y: 0.10506344, z: 0.33102345}
+  m_Center: {x: 0.20861858, y: -0.91709375, z: 0.10382068}
 --- !u!1 &543464405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,7 +2972,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.409
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3033,7 +3010,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.937
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3334,6 +3311,11 @@ Prefab:
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.303
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -3728,11 +3710,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.315
+      value: -0.444
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5.525
+      value: 4.665
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3757,11 +3739,11 @@ Prefab:
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 979686764}
+      objectReference: {fileID: 1434947266}
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 39998183}
+      objectReference: {fileID: 1397092225}
     - target: {fileID: 147176, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -4384,7 +4366,7 @@ Prefab:
     - target: {fileID: 82665059768600252, guid: 56e6aae4b7c09c14ea30743d598e5efe,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.99
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1917367264731730, guid: 56e6aae4b7c09c14ea30743d598e5efe, type: 2}
       propertyPath: m_TagString
@@ -4401,6 +4383,11 @@ Prefab:
     - target: {fileID: 1044155343893576, guid: 56e6aae4b7c09c14ea30743d598e5efe, type: 2}
       propertyPath: m_TagString
       value: SecondStageItems
+      objectReference: {fileID: 0}
+    - target: {fileID: 82665059768600252, guid: 56e6aae4b7c09c14ea30743d598e5efe,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.545
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56e6aae4b7c09c14ea30743d598e5efe, type: 2}
@@ -4443,7 +4430,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.021372832
+  m_Radius: 0.05
   m_Height: 2.4102173
   m_Direction: 1
   m_Center: {x: 0, y: 0.29929113, z: 0.04819081}
@@ -5119,136 +5106,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978767140}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!43 &979686764
-Mesh:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  serializedVersion: 8
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 24
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 8
-    localAABB:
-      m_Center: {x: 0, y: 0.01, z: 0}
-      m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
-  m_Skin: []
-  m_VertexData:
-    m_CurrentChannels: 13
-    m_VertexCount: 8
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 28
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 288
-    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0.01, z: 0}
-    m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshOptimized: 0
 --- !u!1 &983750823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5723,12 +5580,17 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: Priority
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -5833,12 +5695,17 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: Priority
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -5950,13 +5817,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.835
+  m_Volume: 0.179
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 108
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -6426,6 +6293,11 @@ Prefab:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.956
       objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.303
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
   m_IsPrefabParent: 0
@@ -6625,7 +6497,7 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
@@ -7671,6 +7543,16 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1697339493}
+    - target: {fileID: 82793064172973370, guid: 82fe5df8bef718c4293d849b5b40b19e,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.351
+      objectReference: {fileID: 0}
+    - target: {fileID: 82793064172973370, guid: 82fe5df8bef718c4293d849b5b40b19e,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82fe5df8bef718c4293d849b5b40b19e, type: 2}
   m_IsPrefabParent: 0
@@ -7863,6 +7745,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.453
       objectReference: {fileID: 0}
+    - target: {fileID: 114707561080243484, guid: 5e34663d6939b134c850371fe86dd5aa,
+        type: 2}
+      propertyPath: sfxCoin
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c1741742cdb7eb408cd5ae7fad183cc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e34663d6939b134c850371fe86dd5aa, type: 2}
   m_IsPrefabParent: 0
@@ -7955,6 +7842,39 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1384509359}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!21 &1397092225
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1412138018 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4571746952939430, guid: 02d4a8ff77b059f42adf4484f8435955,
@@ -8182,6 +8102,136 @@ MonoBehaviour:
   gameManager: {fileID: 1697339493}
   StartUiItems: []
   sfxBell: {fileID: 8300000, guid: e9bbd5af609729c439d26e8632f658c2, type: 3}
+--- !u!43 &1434947266
+Mesh:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  serializedVersion: 8
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 24
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 8
+    localAABB:
+      m_Center: {x: 0, y: 0.01, z: 0}
+      m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
+  m_Skin: []
+  m_VertexData:
+    m_CurrentChannels: 13
+    m_VertexCount: 8
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 288
+    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0.01, z: 0}
+    m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshOptimized: 0
 --- !u!1 &1454449371
 GameObject:
   m_ObjectHideFlags: 0
@@ -8247,7 +8297,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.661
+  m_Volume: 0.211
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8661,6 +8711,16 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1697339493}
+    - target: {fileID: 82793064172973370, guid: 82fe5df8bef718c4293d849b5b40b19e,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 82793064172973370, guid: 82fe5df8bef718c4293d849b5b40b19e,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82fe5df8bef718c4293d849b5b40b19e, type: 2}
   m_IsPrefabParent: 0
@@ -8837,7 +8897,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.738
+  m_Volume: 0.211
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9056,7 +9116,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.738
+  m_Volume: 0.298
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9235,12 +9295,17 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: Priority
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -9321,6 +9386,11 @@ Prefab:
     - target: {fileID: 1709744014357938, guid: ee28a712ee90bf14d97129b8a2954ed0, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82128294720775076, guid: ee28a712ee90bf14d97129b8a2954ed0,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.361
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee28a712ee90bf14d97129b8a2954ed0, type: 2}
@@ -9950,7 +10020,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.303
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10301,12 +10371,17 @@ Prefab:
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: m_Volume
-      value: 0.656
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: Priority
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}
@@ -10507,7 +10582,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.215
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10545,13 +10620,13 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.995
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -10563,7 +10638,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -10575,7 +10650,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &1965927874
 Transform:
   m_ObjectHideFlags: 0
@@ -11195,6 +11270,11 @@ Prefab:
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 82050690121076490, guid: 5e3f20d15ea269740a0c1394ab507001,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.303
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e3f20d15ea269740a0c1394ab507001, type: 2}

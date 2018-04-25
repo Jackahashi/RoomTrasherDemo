@@ -13,9 +13,11 @@ public class Totalizer : MonoBehaviour
     public int scoreBoardScore = 000000;
 
     AudioSource audioSource;
-    public AudioClip sfxCoin;
-   
-    
+    public AudioClip sfxCoin; // make shorter version of coin sound for counting
+
+    private bool currentlyCounting = false;
+    private float cooldown;
+    private float cooldownLength = 0.02f;
 
     void Start()
     {
@@ -26,14 +28,28 @@ public class Totalizer : MonoBehaviour
         // auto populate the gamemanager
     }
 
+    private void Update()
+    {
+        if (currentlyCounting)
+        {
+            cooldown -= Time.deltaTime;
+            if (cooldown <= 0)
+            {
+                cooldown = cooldownLength;
+                audioSource.PlayOneShot(sfxCoin);
+            }
+        }
+    }
+
     private void OnEnable()
     {
-        Debug.Log("build index is " + gamemanager.buildIndex);
+       
         scoreBoardScore = 00000;
+        currentlyCounting = true;
         if (gamemanager.buildIndex >= 1)
         {
             Debug.Log("fast score counting");
-            InvokeRepeating("ShowTheScore", 0.001f, 0.001f);
+            InvokeRepeating("ShowTheScore", 0.002f, 0.002f);
         }
         else { InvokeRepeating("ShowTheScore", 0.02f, 0.02f); }
 
@@ -42,14 +58,20 @@ public class Totalizer : MonoBehaviour
 
     void ShowTheScore()
     {
-
+        /*for(int scoreBoardScore = 0; scoreBoardScore < gamemanager.score; scoreBoardScore++)
+        {
+            scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
+            audioSource.PlayOneShot(sfxCoin);
+        }
+        */
+        
         scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
         if (scoreBoardScore < gamemanager.score)
         {
             scoreBoardScore++;
-            audioSource.PlayOneShot(sfxCoin);
+            
         }
-
+        
         if (scoreBoardScore >= gamemanager.score)
         {
             if(gamemanager.buildIndex == 1)
@@ -57,16 +79,18 @@ public class Totalizer : MonoBehaviour
                 scoreBoard.text = ("$" + (scoreBoardScore.ToString("00000")));
                 gamemanager.CheckTheScore();
                 CancelInvoke();
-               
+                currentlyCounting = false;
+
             }
             if (gamemanager.buildIndex == 0)
             {
                 gamemanager.CheckTheScore();
                 StartCoroutine(ScoreDisplayDelay());
                 CancelInvoke();
+                currentlyCounting = false;
             }
         }
-
+        //audioSource.PlayOneShot(sfxCoin);
     }
 
     IEnumerator ScoreDisplayDelay()
