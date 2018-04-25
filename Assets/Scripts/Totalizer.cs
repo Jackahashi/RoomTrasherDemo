@@ -49,7 +49,7 @@ public class Totalizer : MonoBehaviour
         if (gamemanager.buildIndex >= 1)
         {
             Debug.Log("fast score counting");
-            InvokeRepeating("ShowTheScore", 0.002f, 0.002f);
+            InvokeRepeating("ShowTheScore", 0.001f, 0.001f);
         }
         else { InvokeRepeating("ShowTheScore", 0.02f, 0.02f); }
 
