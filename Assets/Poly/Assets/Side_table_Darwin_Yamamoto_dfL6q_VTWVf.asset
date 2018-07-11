@@ -24,13 +24,14 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PbrOpaqueDoubleSided
-  m_Shader: {fileID: 4800000, guid: fdd67cb064f9adf4ea9ff64d948f9387, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 657644011ad6c5a4892802ea13cfbac6, type: 3}
+  m_ShaderKeywords: _ALPHABLEND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -75,29 +76,34 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _MetallicFactor: 0
-    - _Mode: 0
+    - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RoughnessFactor: 0.6
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _BaseColorFactor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.5566038, g: 0.35914564, b: 0.23366857, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!43 &43181059689396902
 Mesh:
   m_ObjectHideFlags: 0
@@ -132,7 +138,7 @@ Mesh:
   m_IndexBuffer: 0300000001000300010002000700040005000700050006000b00080009000b0009000a000f000c000d000f000d000e001300100011001300110012001700140015001700150016001b00180019001b0019001a001f001c001d001f001d001e002300200021002300210022002700240025002700250026002b00280029002b0029002a002f002c002d002f002d002e003b00300031003b00310032003b00320033003b00330034003b00340035003b00350036003b00360037003b00370038003b00380039003b0039003a0047003c003d0047003d003e0047003e003f0047003f0040004700400041004700410042004700420043004700430044004700440045004700450046004b00480049004b0049004a004f004c004d004f004d004e005400500051005100520053005100530054005900550056005900560057005900570058005d005a005b005d005b005c0061005e005f0061005f0060006500620063006500630064006900660067006900670068006c006a006b006f006d006e007300700071007300710072007700740075007700750076007c007800790079007a007b0079007b007c0081007d007e0081007e007f0081007f0080008500820083008500830084008900860087008900870088008d008a008b008d008b008c0091008e008f0091008f0090009400920093009700950096009b00980099009b0099009a009f009c009d009f009d009e00a300a000a100a300a100a200a700a400a500a700a500a600ab00a800a900ab00a900aa00af00ac00ad00af00ad00ae00b300b000b100b300b100b200b700b400b500b700b500b600bb00b800b900bb00b900ba00bf00bc00bd00bf00bd00be00c300c000c100c300c100c200c700c400c500c700c500c600d300c800c900d300c900ca00d300ca00cb00d300cb00cc00d300cc00cd00d300cd00ce00d300ce00cf00d300cf00d000d300d000d100d300d100d200df00d400d500df00d500d600df00d600d700df00d700d800df00d800d900df00d900da00df00da00db00df00db00dc00df00dc00dd00df00dd00de00
   m_Skin: []
   m_VertexData:
-    m_CurrentChannels: 7
+    serializedVersion: 2
     m_VertexCount: 224
     m_Channels:
     - stream: 0
@@ -144,9 +150,25 @@ Mesh:
       format: 0
       dimension: 3
     - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
       offset: 24
       format: 0
       dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
     - stream: 0
       offset: 0
       format: 0

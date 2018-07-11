@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour {
 
@@ -11,9 +12,10 @@ public class GameManager : MonoBehaviour {
     public GameObject[] Stage2Items;
     public ObjectScript objectscript;
     public UIAlphaController stage2UI;
+    public RenderAlphaController objectFader;
 
     public int score;
-    public static int requiredScore = 160;
+    public static int requiredScore = 110;
 
     private float delayTimerDelay;
 
@@ -41,9 +43,7 @@ public class GameManager : MonoBehaviour {
     public GameObject Bell;
 
     public GameObject[] screens;
-    
-
-
+    public VideoPlayer videoPlayer;
 
     void Start () {
         buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour {
             {
                 screen.SetActive(false);
             }
+            videoPlayer.Prepare();
         } 
     }
 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour {
     {
         StartCoroutine(DelayLevel2Items());
         score = 0;
+        objectFader.FadeTheRenderers();
         stage2UI.FadeUp();
         foreach (GameObject item in Stage2Items)
         {
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         scoreBoard.SetActive(true);
         totalizer.enabled = true;
+
         if (buildIndex == 1)
         {
             printerScript.enabled = false;
@@ -205,21 +208,22 @@ public class GameManager : MonoBehaviour {
         if (buildIndex == 1)
         {
             printerScript.enabled = true;
-            delayTimerDelay = 1;
             foreach (GameObject screen in screens)
             {
                 screen.SetActive(true);
             }
-            //ExtraAudioSource.PlayOneShot(sfxLevel1Music);
         }
+        videoPlayer.Play();
         totalizer.enabled = false;
         scoreBoard.SetActive(false);
         score = 0;
+        delayTimerDelay = 1;
         StartCoroutine(DelayTimerStart());
         
         foreach (GameObject item in Stage2Items)
         {
-            item.layer = 9;
+            item.layer = 9; // -------------perhaps this isn't needed
+             
             objectscript = item.GetComponent<ObjectScript>();
             if (objectscript != null)
             {
@@ -234,14 +238,23 @@ public class GameManager : MonoBehaviour {
 
 
         yield return new WaitForSeconds(4f);
-        ExtraAudioSource.PlayOneShot(sfxLevel1Music);
+        if (buildIndex >= 1)
+        {
+            ExtraAudioSource.PlayOneShot(sfxLevel1Music);
+        }
+            
         foreach (GameObject obj in Stage2Items)
         {
             obj.layer = 0;
         }
         timerScript.enabled = true;
-        ExtraAudioSource.PlayOneShot(sfxLevel1Music);
+        
     }
+
+
+
+
+
 
     private void Destroypapers()
     {

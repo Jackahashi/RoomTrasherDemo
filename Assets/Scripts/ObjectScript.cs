@@ -111,8 +111,6 @@ public class ObjectScript : MonoBehaviour
             rigidbody.angularVelocity = HammerRigidbody.angularVelocity;
             beingHeld = false;
         }
-
-        
     }
     */
 
