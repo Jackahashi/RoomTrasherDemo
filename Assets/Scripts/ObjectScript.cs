@@ -48,7 +48,6 @@ public class ObjectScript : MonoBehaviour
                 gameManager.EndStageOne();
                 musicPlaying = true;
             }
-
         }
        if (collision.gameObject.tag == "Hammer")
         {

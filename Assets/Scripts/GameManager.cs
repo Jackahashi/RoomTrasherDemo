@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public ObjectScript objectscript;
     public UIAlphaController stage2UI;
     public RenderAlphaController objectFader;
+    public GameObject stage1Furniture;
 
     public int score;
     public static int requiredScore = 110;
@@ -205,6 +206,12 @@ public class GameManager : MonoBehaviour {
     //-----------------------------------------------------reset timer---------------------------------------------------------------------
     public void ResetTimer()
     {
+        totalizer.enabled = false;
+        scoreBoard.SetActive(false);
+        score = 0;
+        delayTimerDelay = 1;
+        StartCoroutine(DelayTimerStart());
+
         if (buildIndex == 1)
         {
             printerScript.enabled = true;
@@ -212,13 +219,9 @@ public class GameManager : MonoBehaviour {
             {
                 screen.SetActive(true);
             }
+            videoPlayer.Play();
         }
-        videoPlayer.Play();
-        totalizer.enabled = false;
-        scoreBoard.SetActive(false);
-        score = 0;
-        delayTimerDelay = 1;
-        StartCoroutine(DelayTimerStart());
+
         
         foreach (GameObject item in Stage2Items)
         {
@@ -235,7 +238,10 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(delayTimerDelay);
         audioSource.PlayOneShot(sfxTimerStart);
-
+        if (buildIndex == 0)
+        {
+            stage1Furniture.SetActive(false);
+        }
 
         yield return new WaitForSeconds(4f);
         if (buildIndex >= 1)
