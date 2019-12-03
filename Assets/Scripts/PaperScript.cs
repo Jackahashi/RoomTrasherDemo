@@ -15,7 +15,7 @@ public class PaperScript : MonoBehaviour {
         box = GetComponent<BoxCollider>();
     }
 
-
+    //----------------------------- TODO change to fixedupdate
     void Update () {
         if(transform.localPosition.x > -1f)
         {

@@ -29,6 +29,7 @@ public class BellScript : MonoBehaviour {
 
     private void OnEnable()
     {
+        // TODO add a delay so that the hammer cant be hit straight away??
         beenHit = false;
         foreach (GameObject item in StartUiItems)
         {
@@ -60,7 +61,7 @@ public class BellScript : MonoBehaviour {
         {
             item.SetActive(false);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;

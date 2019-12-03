@@ -23,6 +23,8 @@ public class PrinterScript : MonoBehaviour {
         audioSource.Stop();
     }
 
+
+    //----------------------------------------------TODO pool the paper objects!!!!!!!!!!!!!!
     void Update()
     {
             cooldown -= Time.deltaTime;

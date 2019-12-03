@@ -20,16 +20,13 @@ public class ObjectScript : MonoBehaviour
     Quaternion startRotation;
     AudioSource audioSource;
 
-    //private Rigidbody rb;
-    //private bool Hammer1Collided = false;
-    //private bool Hammer2Collided = false;
-    //private bool beingHeld = false;
-    //public float throwForce = 1;
-    //private static int hammerCount;
+    ObjectPooler objectpooler; 
 
 
     void Start()
     {
+        objectpooler = objectpooler.Instance;
+        //TODO Turn gamemanager script into a singleton  test toi see if it can persist to avoid costly .find
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
         startPosition = gameObject.transform.position;
@@ -49,22 +46,6 @@ public class ObjectScript : MonoBehaviour
                 musicPlaying = true;
             }
         }
-       if (collision.gameObject.tag == "Hammer")
-        {
-            /* if (collision.gameObject.name == "Right Hammer")
-                 Hammer1Collided = true;
-             else if (collision.gameObject.name == "Left Hammer")
-                 Hammer2Collided = true;
-
-             if (Hammer1Collided && Hammer2Collided)
-             {
-                 Debug.Log("Hammer picked up");
-                 gameObject.transform.SetParent(collision.transform);
-                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                 beingHeld = true;
-
-             } */
-        }
         else
         {
             if (collision.relativeVelocity.magnitude > 1)
@@ -73,12 +54,14 @@ public class ObjectScript : MonoBehaviour
                 foreach (ContactPoint contact in collision.contacts)
                 {
                     Instantiate(particleSystemPrefab, contact.point, Quaternion.identity);
+                    // ObjectPooler.SpawnFromPool("Impact", contact.point, Quaternion.identity);
                 }
 
                 if (ScoreImpact && collision.transform.root != transform.root)
                 {
                     
                     Instantiate(moneyParticle, gameObject.transform.position, Quaternion.identity);
+                    // ObjectPooler.SpawnFromPool("moneyParticle", gameObject.transform.position, Quaternion.identity);
                     ScoreImpact = false;
                     gameManager.scorePoints(scoreValue);
                     audioSource.PlayOneShot(sfxMoney);
@@ -88,7 +71,43 @@ public class ObjectScript : MonoBehaviour
   
     }
 
-   /* public void OnCollisionExit(Collision collision)
+   
+
+    public void StartingPositions()
+    {
+        gameObject.transform.position = startPosition;
+        gameObject.transform.rotation = startRotation;
+        ScoreImpact = true;
+    }
+
+    public void showValue()
+    {
+        if(ScoreImpact != true)
+        {
+            Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
+            // ObjectPooler.SpawnFromPool("dollarParticle", gameObject.transform.position, Quaternion.identity);
+            
+        }
+      
+    }
+
+
+}
+
+
+
+
+
+
+
+//private Rigidbody rb;
+//private bool Hammer1Collided = false;
+//private bool Hammer2Collided = false;
+//private bool beingHeld = false;
+//public float throwForce = 1;
+//private static int hammerCount;
+
+/* public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.name == "Right Hammer")
             // maybe put delays of 0.5 seconds in here?
@@ -113,28 +132,22 @@ public class ObjectScript : MonoBehaviour
     }
     */
 
-    public void StartingPositions()
-    {
-        gameObject.transform.position = startPosition;
-        gameObject.transform.rotation = startRotation;
-        ScoreImpact = true;
-    }
+//if (collision.gameObject.tag == "Hammer")
+//   {
+//       /* if (collision.gameObject.name == "Right Hammer")
+//            Hammer1Collided = true;
+//        else if (collision.gameObject.name == "Left Hammer")
+//            Hammer2Collided = true;
 
-    public void showValue()
-    {
-        if(ScoreImpact != true)
-        {
-            Instantiate(dollarParticle, gameObject.transform.position, Quaternion.identity);
-        }
-      
-    }
+//        if (Hammer1Collided && Hammer2Collided)
+//        {
+//            Debug.Log("Hammer picked up");
+//            gameObject.transform.SetParent(collision.transform);
+//            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+//            beingHeld = true;
 
-
-}
-
-
-
-
+//        } */
+//   }
 
 
 

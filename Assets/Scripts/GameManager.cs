@@ -7,6 +7,8 @@ using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour {
 
+    //TODO-------------- MAke this script a singleton ... test to see if it can persist between scenes
+
 
     public LightsController[] lighting;
     public GameObject[] Stage2Items;
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         timerScript = timerScript.GetComponent<Timer>();
         totalizer = totalizer.GetComponent<Totalizer>();
+        //TODO Try and referenc the scoreboard better
         scoreBoard = GameObject.Find("ScoreBoardPanel");
         totalizer.enabled = false;
         timerScript.enabled = false;
@@ -65,7 +68,8 @@ public class GameManager : MonoBehaviour {
 
         if (buildIndex == 1)
         {
-            
+
+            //TODO ----------------------------TRy and find the printerscript more efficiently 
             printerScript = GameObject.Find("PrinterContainer").GetComponentInChildren<PrinterScript>();
             highscore = PlayerPrefs.GetInt("highscore", highscore);
             highScoreText.text = ("$" + (highscore.ToString()));
